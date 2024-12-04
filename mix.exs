@@ -58,6 +58,11 @@ defmodule KafkaClient.MixProject do
             "priv/kafka-client-1.0.jar"
           )
 
+          File.cp(
+            "port/repo/com/openbet/openmarket/kafka-oauth2/1.5/kafka-oauth2-1.5.jar",
+            "priv/kafka-oauth2-1.5.jar"
+          )
+
         {output, status} ->
           Mix.raise("#{output}\n\nPort project build exited with the status #{status}")
       end
