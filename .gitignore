@@ -21,6 +21,7 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 kafka_client-*.tar
+kafka-oauth2-*.jar
 
 # Temporary files, for example, from tests.
 /tmp/

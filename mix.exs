@@ -44,8 +44,8 @@ defmodule KafkaClient.MixProject do
       src_hash = src_hash()
 
       case System.cmd(
-             "mvn",
-             ~w/clean compile assembly:single/,
+             "sh",
+             ["-c", "./mvnw clean compile assembly:single"],
              cd: "port",
              stderr_to_stdout: true
            ) do
