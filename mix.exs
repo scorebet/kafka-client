@@ -49,7 +49,9 @@ defmodule KafkaClient.MixProject do
              cd: "port",
              stderr_to_stdout: true
            ) do
-        {_output, 0} ->
+        {output, 0} ->
+          Mix.shell().info(output)
+
           File.write("port/target/src_hash", src_hash)
           File.mkdir_p!("priv")
 
