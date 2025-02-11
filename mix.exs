@@ -45,7 +45,7 @@ defmodule KafkaClient.MixProject do
 
       case System.cmd(
              "sh",
-             ["-c", "./mvnw clean compile assembly:single"],
+             ["-c", "./mvnw --version && ./mvnw clean compile assembly:single"],
              cd: "port",
              stderr_to_stdout: true
            ) do
