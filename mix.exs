@@ -44,18 +44,25 @@ defmodule KafkaClient.MixProject do
       src_hash = src_hash()
 
       case System.cmd(
-             "mvn",
-             ~w/clean compile assembly:single/,
+             "sh",
+             ["-c", "./mvnw --version && ./mvnw clean compile assembly:single"],
              cd: "port",
              stderr_to_stdout: true
            ) do
-        {_output, 0} ->
+        {output, 0} ->
+          Mix.shell().info(output)
+
           File.write("port/target/src_hash", src_hash)
           File.mkdir_p!("priv")
 
           File.cp(
             "port/target/kafka-client-1.0-SNAPSHOT-jar-with-dependencies.jar",
             "priv/kafka-client-1.0.jar"
+          )
+
+          File.cp(
+            "port/repo/com/openbet/openmarket/kafka-oauth2/1.5/kafka-oauth2-1.5.jar",
+            "priv/kafka-oauth2-1.5.jar"
           )
 
         {output, status} ->
